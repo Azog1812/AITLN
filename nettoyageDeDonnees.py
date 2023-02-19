@@ -28,3 +28,32 @@ lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
 
 # Afficher les résultats
 print(lemmatized_tokens)
+
+word_dict = {}
+for sentence in sentences:
+    for word in sentence:
+        if word not in word_dict:
+            word_dict[word] = 0
+
+for sentence in sentences:
+    for word in sentence:
+        if word in word_dict:
+            word_dict[word] += 1
+
+vectors = []
+for sentence in sentences:
+    vector = []
+    for word in word_dict:
+        if word in sentence:
+            vector.append(sentence.count(word))
+        else:
+            vector.append(0)
+    vectors.append(vector)
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+# Créer un objet CountVectorizer
+vectorizer = CountVectorizer()
+
+# Appliquer le CountVectorizer à votre ensemble de données
+X = vectorizer.fit_transform(sentences)
