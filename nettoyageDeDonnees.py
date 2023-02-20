@@ -4,8 +4,9 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 import string
 
+
 # Collecte des données textuelles
-text = "Votre texte à nettoyer"
+text = "Votre texte à nettoyer. test de vectorization."
 
 # Nettoyage des données
 # Convertir le texte en minuscules
@@ -28,6 +29,22 @@ lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
 
 # Afficher les résultats
 print(lemmatized_tokens)
+
+
+# Segmentez le texte en phrases
+sentences = nltk.sent_tokenize(text)
+
+# Prétraitez chaque phrase
+for i in range(len(sentences)):
+    # Divisez la phrase en mots
+    words = nltk.word_tokenize(sentences[i])
+
+    # Prétraitement des mots
+    words = [word.lower() for word in words if word.isalpha() and word not in stop_words]
+
+    # Remplacez la phrase d'origine par la phrase prétraitée
+    sentences[i] = words
+
 
 word_dict = {}
 for sentence in sentences:
