@@ -11,7 +11,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 # Etape 1: Charger et nettoyer les données
-data = pd.read_csv('chemin/vers/votre/fichier.csv')
+data = pd.read_csv('phrases.csv')
 clean_data = data.copy()
 clean_data['text'] = clean_data['text'].apply(lambda x: clean_text(x))
 
