@@ -67,10 +67,13 @@ for sentence in sentences:
             vector.append(0)
     vectors.append(vector)
 
+print (sentences)
+
 from sklearn.feature_extraction.text import CountVectorizer
 
 # Créer un objet CountVectorizer
 vectorizer = CountVectorizer()
 
 # Appliquer le CountVectorizer à votre ensemble de données
-X = vectorizer.fit_transform(sentences)
+vectorizer.fit(sentences)
+X = vectorizer.transform(sentences)
