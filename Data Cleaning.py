@@ -69,11 +69,10 @@ for sentence in sentences:
 
 print (sentences)
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-# Créer un objet CountVectorizer
-vectorizer = CountVectorizer()
+vectorizer = TfidfVectorizer(lowercase=True, stop_words='french')
+
 
 # Appliquer le CountVectorizer à votre ensemble de données
-vectorizer.fit(sentences)
-X = vectorizer.transform(sentences)
+X = vectorizer.fit_transform(sentences)
